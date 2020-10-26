@@ -1,9 +1,18 @@
+databases:
+- engine: PG
+  name: db
+  num_nodes: 1
+  size: db-s-dev-database
+  version: "12"
 name: sample-hugo
+region: nyc
 static_sites:
 - build_command: rm -r ./public; hugo --destination ./public
   environment_slug: hugo
-  github:
+  git:
     branch: main
-    deploy_on_push: true
-    repo: digitalocean/sample-hugo
+    repo_clone_url: https://github.com/digitalocean/sample-hugo.git
   name: sample-hugo
+  routes:
+  - path: /
+
